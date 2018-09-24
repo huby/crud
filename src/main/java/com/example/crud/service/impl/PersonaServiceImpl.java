@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.example.crud.beans.domain.Persona;
@@ -41,6 +42,16 @@ public class PersonaServiceImpl implements PersonaService {
 	@Override
 	public List<Persona> getPersonaList() {
 		return personaRepository.findAll();
+	}
+
+	@Override
+	public Persona modificar(Persona id) {
+		return personaRepository.save(id);
+	}
+	@Override
+	public String eliminar(String id) {
+		personaRepository.deleteById(id);
+		return "Eliminado" + id;
 	}
 
 }
