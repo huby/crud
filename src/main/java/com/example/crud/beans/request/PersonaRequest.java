@@ -10,6 +10,8 @@ public class PersonaRequest {
 	
 	//modelo por solo Rest
 	@JsonProperty
+	private String id;
+	@JsonProperty
 	private String primerNombre;
 	@JsonProperty
 	private String segundoNombre;
@@ -80,6 +82,14 @@ public class PersonaRequest {
 	}
 	public void setFechaNacimiento(Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 	

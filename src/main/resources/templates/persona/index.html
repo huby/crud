@@ -1,0 +1,44 @@
+<html>
+	<head>
+	</head>
+	<body>
+		<h1>Hola Mundo</h1>
+		
+		<table>
+			<thead>
+				<tr>
+					<th> Id </th>
+				<th> PrimerNombre </th>
+				<th> SegundoNombre </th>
+				<th> PrimerApellido </th>
+				<th> SegundoApellido </th>
+				<th> TipoDocumento </th>
+				<th> NumeroDoc </th>
+				<th> FechaNacimiento </th>
+				<th> Estado </th>
+				<th> FechaCreacion </th>
+				<th> FechaActualizacion </th>	
+				</tr>
+			</thead>
+			<tbody>
+			
+			<tr th:each="item: ${personaList}"> 
+				<td th:text="${item.id}"> Id </th>
+				<td th:text="${item.primerNombre}"> PrimerNombre </th>
+				<td th:text="${item.segundoNombre}"> SegundoNombre </th>
+				<td th:text="${item.primerApellido}"> PrimerApellido </th>
+				<td th:text="${item.segundoApellido}"> SegundoApellido </th>
+				<td th:text="${item.tipoDoc}"> TipoDocumento </th>
+				<td th:text="${item.numeroDoc}"> NumeroDoc </th>
+				<td th:text="${item.fechaNacimiento}"> FechaNacimiento </th>
+				<td th:text="${item.estado}"> Estado </th>
+				<td th:text="${item.fechaCreacion}"> FechaCreacion </th>
+				<td th:text="${item.fechaActualizacion}"> FechaActualizacion </th> 
+			</tr>
+			
+			</tbody>
+			 
+		</table>
+		
+	</body>
+</html>

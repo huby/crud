@@ -1,17 +1,20 @@
 package com.example.crud.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.example.crud.beans.domain.Persona;
 import com.example.crud.beans.request.PersonaRequest;
 
 public interface PersonaService {
 	
-	String save(PersonaRequest request);
+	Map<String, String> save(PersonaRequest request);   // para guardar 
 	
-	List<Persona> getPersonaList();
+	List<Persona> getPersonaList();    //mostrar lista
 	
-	Persona modificar(Persona id);
+	Map<String,String> modificar(PersonaRequest request);  // para modificar 
 	
-	String eliminar(String id);
+	Map<String, String> eliminar(String id);
+	
+	Persona listarPersona(String id);
  }
