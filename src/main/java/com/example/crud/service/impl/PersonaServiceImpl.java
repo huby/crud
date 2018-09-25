@@ -24,7 +24,6 @@ public class PersonaServiceImpl implements PersonaService {
 	@Override
 	public Map<String, String> save(PersonaRequest request) {
 		
-		
 		Persona persona = new Persona();
 		Map<String, String> result = new HashMap<>();
 		String id = UUID.randomUUID().toString();
@@ -86,9 +85,14 @@ public class PersonaServiceImpl implements PersonaService {
 	}
 	@Override
 	public Map<String, String> eliminar(String id) {
-		String mensaje  = "elimando";
-		Map<String, String> result = new HashMap<>();		
+		String mensaje  = "";
+		Map<String, String> result = new HashMap<>();
+		if(personaRepository.existsById(id)) {
 			personaRepository.deleteById(id);
+			mensaje = "Se la eliminado";
+		}else {
+			mensaje = "No se ha eliminado/no existe";
+		}
 		result.put("mensaje", mensaje);
 	
 		return result;

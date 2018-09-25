@@ -22,7 +22,7 @@ public class Automovil {
 	@Column
 	private String placa;
 	@Column
-	private String añoFabricacion;
+	private String fabricacion;
 	@Column
 	private Date fechaCreacion;
 	@Column
@@ -32,7 +32,7 @@ public class Automovil {
 		super();
 	}
 	
-	public Automovil(String id, String marca, String modelo, String color, String placa, String añoFabricacion,
+	public Automovil(String id, String marca, String modelo, String color, String placa, String fabricacion,
 			Date fechaCreacion, Date fechaActializacion) {
 		super();
 		this.id = id;
@@ -40,7 +40,7 @@ public class Automovil {
 		this.modelo = modelo;
 		this.color = color;
 		this.placa = placa;
-		this.añoFabricacion = añoFabricacion;
+		this.fabricacion = fabricacion;
 		this.fechaCreacion = fechaCreacion;
 		this.fechaActializacion = fechaActializacion;
 	}
@@ -85,12 +85,12 @@ public class Automovil {
 		this.placa = placa;
 	}
 
-	public String getAñoFabricacion() {
-		return añoFabricacion;
+	public String getFabricacion() {
+		return fabricacion;
 	}
 
-	public void setAñoFabricacion(String añoFabricacion) {
-		this.añoFabricacion = añoFabricacion;
+	public void setFabricacion(String fabricacion) {
+		this.fabricacion = fabricacion;
 	}
 
 	public Date getFechaCreacion() {
@@ -108,5 +108,10 @@ public class Automovil {
 	public void setFechaActializacion(Date fechaActializacion) {
 		this.fechaActializacion = fechaActializacion;
 	}
+	
+	
+
+	
+
 	
 }

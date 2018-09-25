@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,9 +30,13 @@ public class AutomovilRestController {
 	}
 	
 	@GetMapping("/")
-	public ResponseEntity<List<Automovil>> Lista() {
-		return new ResponseEntity<>(automovilService.Lista(), HttpStatus.OK);
+	public ResponseEntity<List<Automovil>> lista() {
+		return new ResponseEntity<>(automovilService.lista(), HttpStatus.OK);
 	}
-
+	
+	@PutMapping("/")
+	public ResponseEntity<Map<String,String>> modificar(@RequestBody AutomovilRequest request){
+		return new ResponseEntity<>(automovilService.modificar(request), HttpStatus.OK);
+	}
 
 }

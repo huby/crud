@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,16 +24,14 @@ public class AutomovilServiceImpl implements AutomovilService  {
 	@Override
 	public Map<String, String> save(AutomovilRequest request) {
 		Automovil auto = new Automovil();
-		
 		Map<String, String> mapeo = new HashMap<>();
-		
 		String id = UUID.randomUUID().toString();
 		auto.setId(id);
 		auto.setModelo(request.getModelo());
 		auto.setMarca(request.getMarca());
 		auto.setColor(request.getColor());
 		auto.setPlaca(request.getPlaca());
-		auto.setAñoFabricacion(request.getAñoFabricacion());
+		auto.setFabricacion(request.getFabricacion());
 		auto.setFechaCreacion(new Date());
 		auto.setFechaActializacion(new Date());
 		
@@ -43,9 +42,36 @@ public class AutomovilServiceImpl implements AutomovilService  {
 	}
 
 	@Override
-	public List<Automovil> Lista() {
+	public List<Automovil> lista() {
+		return automovilRespository.findAll();
+	}
+
+	@Override
+	public Map<String, String> modificar(AutomovilRequest request) {
+		String mensaje = "";
+		Optional<Automovil> autos = automovilRespository.findById(request.getId());
+		Map<String, String> mapeo = new HashMap<>();
 		
-		return null;
+		Automovil auto = null;
+		if(autos.isPresent()) {
+			auto = autos.get();
+			auto.setModelo(request.getModelo());
+			auto.setMarca(request.getMarca());
+			auto.setColor(request.getColor());
+			auto.setPlaca(request.getPlaca());
+			auto.setFabricacion(request.getFabricacion());
+			auto.setFechaActializacion(new Date());
+			
+			automovilRespository.save(auto);
+			
+			mensaje = "Se ha modificado";
+		}else {
+			mensaje = "No modificado/no existe";
+		}
+		
+		mapeo.put("mensaje", mensaje);
+		
+		return mapeo;
 	}
 	
 	

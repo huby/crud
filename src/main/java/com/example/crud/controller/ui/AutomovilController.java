@@ -6,19 +6,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.example.crud.service.PersonaService;
+import com.example.crud.service.AutomovilService;
 
 @Controller
-@RequestMapping("/uiPersona/")
-public class PersonaController {
-	
+@RequestMapping("/uiAutomovil/")
+public class AutomovilController {
+
 	@Autowired
-	PersonaService personaService;
+	AutomovilService service;
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/persona")
+	@RequestMapping(method = RequestMethod.GET, value = "/automovil")
 	public String index(Model model) {
-		model.addAttribute("personaList", personaService.getPersonaList());
-		return "persona/index";
+		model.addAttribute("personaList", service.lista());
+		return "automovil/index";
 	}
-	
 }

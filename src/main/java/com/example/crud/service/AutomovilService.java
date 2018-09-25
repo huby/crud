@@ -8,5 +8,6 @@ import com.example.crud.beans.request.AutomovilRequest;
 
 public interface AutomovilService {
 	Map<String,String> save(AutomovilRequest request);	
-	List<Automovil> Lista();
+	List<Automovil> lista();
+	Map<String, String> modificar(AutomovilRequest request);
 }

@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AutomovilRequest {
 	
 	@JsonProperty
+	private String id;
+	@JsonProperty
 	private String marca;
 	@JsonProperty
 	private String modelo;
@@ -13,27 +15,32 @@ public class AutomovilRequest {
 	@JsonProperty
 	private String placa;
 	@JsonProperty
-	private String añoFabricacion;
+	private String fabricacion;
 	
 	public AutomovilRequest() {
 		super();
 	}
 
-	public AutomovilRequest(String marca, String modelo, String color, String placa, String añoFabricacion) {
+	public AutomovilRequest(String id, String marca, String modelo, String color, String placa, String anioFabricacion) {
 		super();
+		this.id = id;
 		this.marca = marca;
 		this.modelo = modelo;
 		this.color = color;
 		this.placa = placa;
-		this.añoFabricacion = añoFabricacion;
+		this.fabricacion = anioFabricacion;
 	}
 
 	public String getMarca() {
 		return marca;
 	}
 
-	public void setMarca(String marca) {
-		this.marca = marca;
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getModelo() {
@@ -60,13 +67,17 @@ public class AutomovilRequest {
 		this.placa = placa;
 	}
 
-	public String getAñoFabricacion() {
-		return añoFabricacion;
+	public String getFabricacion() {
+		return fabricacion;
 	}
 
-	public void setAñoFabricacion(String añoFabricacion) {
-		this.añoFabricacion = añoFabricacion;
+	public void setFabricacion(String fabricacion) {
+		this.fabricacion = fabricacion;
 	}
-	
+
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
+
 	
 }
