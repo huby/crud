@@ -1,5 +1,9 @@
 package com.example.crud.service.impl;
 
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -11,9 +15,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.crud.beans.domain.Persona;
+import com.example.crud.beans.request.FileInformationRequest;
 import com.example.crud.beans.request.PersonaRequest;
+import com.example.crud.common.FileUtils;
 import com.example.crud.dao.repository.PersonaRepository;
 import com.example.crud.service.PersonaService;
+
 
 @Service
 public class PersonaServiceImpl implements PersonaService {
@@ -103,6 +110,44 @@ public class PersonaServiceImpl implements PersonaService {
 	public Persona listarPersona(String id) {
 		Optional<Persona> personaOptional  = personaRepository.findById(id);
 		return personaOptional.get();
+	}
+
+	@Override
+	public Map<String, String> saveFromFile(FileInformationRequest request) {
+		Map<String, String> result = new HashMap<>();
+		List<String> listaPersona = new ArrayList<>();
+		
+		try {
+			listaPersona = FileUtils.readLinesFromTxt(request.getDirectory(),request.getFileName());
+			for(int i = 0; i<listaPersona.size();i++){
+				Persona persona = new Persona();
+			
+				String personaStr = listaPersona.get(i); //recorre toda la nueva lista 
+				persona.setId(personaStr.substring(0,50).trim());
+				persona.setPrimerNombre(personaStr.substring(50,75).trim());
+				persona.setSegundoNombre(personaStr.substring(75,100).trim());
+				persona.setPrimerApellido(personaStr.substring(100,125).trim());
+				persona.setSegundoApellido(personaStr.substring(125,150).trim());
+				persona.setTipoDoc(Integer.parseInt(personaStr.substring(150, 160).trim().trim()));
+				persona.setNumeroDoc(personaStr.substring(160,180).trim());
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+				persona.setFechaNacimiento(sdf.parse(personaStr.substring(180,200).trim()));
+				persona.setFechaCreacion( new Date());
+				persona.setEstado("1");
+				
+				personaRepository.save(persona);
+				
+				result.put("id", persona.getId());
+				
+			}
+			
+		} catch (IOException | ParseException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		return result;
 	}
 
 }

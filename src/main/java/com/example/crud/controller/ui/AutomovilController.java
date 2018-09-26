@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.example.crud.service.AutomovilService;
 
 @Controller
-@RequestMapping("/uiAutomovil/")
+@RequestMapping("/ui")
 public class AutomovilController {
 
 	@Autowired
@@ -17,7 +17,7 @@ public class AutomovilController {
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/automovil")
 	public String index(Model model) {
-		model.addAttribute("personaList", service.lista());
+		model.addAttribute("automovilList", service.lista());
 		return "automovil/index";
 	}
 }

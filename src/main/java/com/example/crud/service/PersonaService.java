@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.example.crud.beans.domain.Persona;
+import com.example.crud.beans.request.FileInformationRequest;
 import com.example.crud.beans.request.PersonaRequest;
 
 public interface PersonaService {
@@ -17,4 +18,6 @@ public interface PersonaService {
 	Map<String, String> eliminar(String id);
 	
 	Persona listarPersona(String id);
+	
+	Map<String, String> saveFromFile(FileInformationRequest request);
  }

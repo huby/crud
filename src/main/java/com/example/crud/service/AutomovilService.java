@@ -10,4 +10,6 @@ public interface AutomovilService {
 	Map<String,String> save(AutomovilRequest request);	
 	List<Automovil> lista();
 	Map<String, String> modificar(AutomovilRequest request);
+	Map<String, String> eliminar(String id);
+	Automovil listarUno(String id);
 }

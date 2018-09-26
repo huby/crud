@@ -1,0 +1,34 @@
+<html>
+	<head>
+		<title> Automovil </title>
+	</head>
+	<body>
+		<h1> Tabla de caracteristicas </h1>
+		<table border = "1">
+			<thead>
+				<tr>
+					<th> Id </th>
+					<th> Marca </th>
+					<th> Modelo </th>
+					<th> Color </th>
+					<th> Placa  </th>
+					<th> Fabricacion </th>
+					<th> FechaCreacion </th>
+					<th> FechaActualizacion </th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each = "item: ${automovilList}">
+					<td th:text = "${item.id}"> Id </td>
+					<td th:text="${item.marca}"> Marca </td>
+					<td th:text="${item.modelo}" > Modelo </td>
+					<td th:text="${item.color}"> Color </td>
+					<td th:text="${item.placa}"> Placa  </td>
+					<td th:text="${item.fabricacion}"> Fabricacion </td>
+					<td th:text="${item.fechaCreacion}"> FechaCreacion </td>
+					<td th:text="${item.fechaActializacion}"> FechaActualizacion </td>
+				</tr>
+			</tbody>
+		</table>	
+	</body>
+</html>

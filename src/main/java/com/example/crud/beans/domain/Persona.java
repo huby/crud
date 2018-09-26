@@ -49,9 +49,10 @@ public class Persona {
 		super();
 	}
 
+	
 	public Persona(String id, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido,
-			Integer tipoDoc, String numeroDoc, Date fechaNacimiento, String estado,
-			Date fechaCreacion, Date fechaActualizacion) {
+			Integer tipoDoc, String numeroDoc, Date fechaNacimiento, String estado, Date fechaCreacion,
+			Date fechaActualizacion) {
 		super();
 		this.id = id;
 		this.primerNombre = primerNombre;
@@ -65,6 +66,8 @@ public class Persona {
 		this.fechaCreacion = fechaCreacion;
 		this.fechaActualizacion = fechaActualizacion;
 	}
+
+
 
 	public String getId() {
 		return id;

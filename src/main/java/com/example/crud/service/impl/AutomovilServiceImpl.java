@@ -73,6 +73,28 @@ public class AutomovilServiceImpl implements AutomovilService  {
 		
 		return mapeo;
 	}
+
+	@Override
+	public Map<String, String> eliminar(String id) {
+		Map<String, String> mapeo = new HashMap<>();
+		String mensaje = null;
+		if(automovilRespository.existsById(id)) {
+			automovilRespository.deleteById(id);
+			mensaje = "Se ha eliminado" + id;
+		}else {
+			mensaje  = "No existe";
+		}
+		mapeo.put("mensaje", mensaje);
+		
+		
+		return mapeo;
+	}
+
+	@Override
+	public Automovil listarUno(String id) {
+		Optional<Automovil> automovil = automovilRespository.findById(id);
+		return automovil.get();
+	}
 	
 	
 }

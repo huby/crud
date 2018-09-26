@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.crud.beans.domain.Persona;
+import com.example.crud.beans.request.FileInformationRequest;
 import com.example.crud.beans.request.PersonaRequest;
 import com.example.crud.service.PersonaService;
 
@@ -52,4 +53,10 @@ public class PersonaRestController {
 	public ResponseEntity<Map<String, String>> eliminar(@PathVariable("id") String id){
 		return new ResponseEntity<>(personaService.eliminar(id), HttpStatus.OK);
 	}
+	
+	@PostMapping("/fromFile")
+	public ResponseEntity<Map<String, String>> saveFromFile(@RequestBody FileInformationRequest request){
+		return new ResponseEntity<>(personaService.saveFromFile(request), HttpStatus.OK);
+	}
+	
 }

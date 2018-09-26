@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.example.crud.service.PersonaService;
 
 @Controller
-@RequestMapping("/uiPersona/")
+@RequestMapping("/ui")
 public class PersonaController {
 	
 	@Autowired
