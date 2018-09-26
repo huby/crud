@@ -56,7 +56,7 @@ public class PersonaRestController {
 	}
 	
 	@PostMapping("/fromFile")
-	public ResponseEntity<Map<String, String>> saveFromFile(@RequestBody FileInformationRequest request){
+	public ResponseEntity<Map<String, List<String>>> saveFromFile(@RequestBody FileInformationRequest request){
 		return new ResponseEntity<>(personaService.saveFromFile(request), HttpStatus.OK);
 	}
 	

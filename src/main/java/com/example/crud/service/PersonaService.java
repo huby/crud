@@ -19,5 +19,5 @@ public interface PersonaService {
 	
 	Persona listarPersona(String id);
 	
-	Map<String, String> saveFromFile(FileInformationRequest request);
+	Map<String, List<String>> saveFromFile(FileInformationRequest request);
  }

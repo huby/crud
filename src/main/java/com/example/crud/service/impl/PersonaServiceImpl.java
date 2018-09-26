@@ -113,12 +113,13 @@ public class PersonaServiceImpl implements PersonaService {
 	}
 
 	@Override
-	public Map<String, String> saveFromFile(FileInformationRequest request) {
-		Map<String, String> result = new HashMap<>();
+	public Map<String, List<String>> saveFromFile(FileInformationRequest request) {
+		Map<String, List<String>> result = new HashMap<>();
 		List<String> listaPersona = new ArrayList<>();
-		
+		List<String> ids = new ArrayList<>();
 		try {
-			listaPersona = FileUtils.readLinesFromTxt(request.getDirectory(),request.getFileName());
+			//listaPersona = FileUtils.readLinesFromTxt(request.getDirectory(),request.getFileName());
+			listaPersona = FileUtils.readLineFromTxt(request.getDirectory(),request.getFileName(), 200);
 			for(int i = 0; i<listaPersona.size();i++){
 				Persona persona = new Persona();
 			
@@ -137,15 +138,14 @@ public class PersonaServiceImpl implements PersonaService {
 				
 				personaRepository.save(persona);
 				
-				result.put("id", persona.getId());
-				
+				ids.add(persona.getId());
 			}
 			
 		} catch (IOException | ParseException e) {
 			e.printStackTrace();
 		}
 		
-		
+		result.put("ids", ids);
 		
 		return result;
 	}
