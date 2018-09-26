@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/ui")
 public class PersonaUIController
 {
-    @RequestMapping(path = "/persona", method = RequestMethod.GET)
-    public String index() {
-        return "index";
-    }
+    //@RequestMapping(path = "/persona", method = RequestMethod.GET)
+    //public String ndex() {
+    //public String index() {
+    	//return null;
+        //return "index";
+    //}
 }

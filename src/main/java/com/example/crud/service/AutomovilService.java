@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.example.crud.beans.domain.Automovil;
 import com.example.crud.beans.request.AutomovilRequest;
+import com.example.crud.beans.request.FileInformationRequest;
 
 public interface AutomovilService {
 	Map<String,String> save(AutomovilRequest request);	
@@ -12,4 +13,5 @@ public interface AutomovilService {
 	Map<String, String> modificar(AutomovilRequest request);
 	Map<String, String> eliminar(String id);
 	Automovil listarUno(String id);
+	Map<String, String> saveFileAuto(FileInformationRequest request);
 }

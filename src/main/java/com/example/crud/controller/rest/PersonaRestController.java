@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.crud.beans.domain.Persona;
 import com.example.crud.beans.request.FileInformationRequest;
 import com.example.crud.beans.request.PersonaRequest;
+import com.example.crud.service.AutomovilService;
 import com.example.crud.service.PersonaService;
 
 @RestController
