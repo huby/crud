@@ -7,19 +7,21 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.example.crud.beans.domain.Persona;
 import com.example.crud.beans.request.FileInformationRequest;
 import com.example.crud.beans.request.PersonaRequest;
-import com.example.crud.service.AutomovilService;
 import com.example.crud.service.PersonaService;
 
 @RestController
@@ -35,7 +37,7 @@ public class PersonaRestController {
 	}
 
 	@PostMapping("/")
-	public ResponseEntity<Map<String, String>> save(@RequestBody PersonaRequest request) {
+	public ResponseEntity<Map<String, String>> save(@ModelAttribute @RequestBody PersonaRequest request) {
 		return new ResponseEntity<>(personaService.save(request), HttpStatus.OK);
 	}
 	
@@ -59,5 +61,13 @@ public class PersonaRestController {
 	public ResponseEntity<Map<String, List<String>>> saveFromFile(@RequestBody FileInformationRequest request){
 		return new ResponseEntity<>(personaService.saveFromFile(request), HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = {"/","/PersonaRequest"})
+	public String botonGuardar(@ModelAttribute PersonaRequest persona)
+	{
+        save(persona);
+	    return "PersonaRequest";
+	}
+
 	
 }

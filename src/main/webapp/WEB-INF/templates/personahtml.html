@@ -1,0 +1,89 @@
+<html>
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="/styles/stylePersona.css"/>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<style type="text/css">
+  		#divPrincipal{font-family: Verdana; background-color: #A5DF00;; width: 80%; margin:0px auto 0px auto;}
+  		#segDiv{font-family: Verdana; background-color: #A5DF00; width: 80%; margin:0px auto 0px auto;}
+  		h1{text-align: center;}
+  		body{background-color: #E6E6E6;}
+  		#buttonRegistrar{width: 100%; align-content: center;}
+  		#tableReporte{width: 100%; align-content: center;}
+  		
+	</style>
+</head>
+<body>
+<div>
+	<h1> CRUD con Thymeleaf</h1>
+</div>
+<div id="divPrincipal" class="PersonaRequest col-md-12" th:unless="${#lists.isEmpty(PersonaRequest)}">
+<form >
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputOneName">Primer Nombre</label>
+      <input type="text" class="form-control" id="inputpnombre" placeholder="Juan">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputTwoName"> Segundo Nombre</label>
+      <input type="text" class="form-control" id="inputsnombre" placeholder="Jose">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPApellido">Primer Apellido</label>
+    <input type="text" class="form-control" id="inputpap" placeholder="Perez">
+  </div>
+  <div class="form-group">
+    <label for="inputSApellido">Segundo Apellido</label>
+    <input type="text" class="form-control" id="inputsap" placeholder="Ruiz">
+  </div>
+  
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="inputState">Tipo de documento</label>
+      <select id="inputState" class="form-control">
+        <option selected>Pasaporte</option>
+        <option selected>DNI</option>
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputNumDoc">Numero de documento</label>
+      <input type="text" class="form-control" id="inputZip">
+    </div>
+  </div>
+  <button modelAttribute="request" action="verPersona.do" method="post" id="buttonRegistrar"type="submit" class="btn btn-primary"> Registrar </button>
+</form>
+</div>
+<div id="segDiv" class="PersonaRestController col-md-12" th:unless="${#lists.isEmpty(PersonaRestController)}">
+	<button  id="button" type="submit" class="btn btn-primary btn-lg form-group" style="width: 33%" onClick="document.getElementById('oculto').style.visibility='visible'">Listar</button>
+	<button id="button" type="submit" class="btn btn-primary btn-lg form-group" style="width: 32%">Modificar</button>
+	<button id="button" type="submit" class="btn btn-primary btn-lg form-group" style="width: 33%">Eliminar</button>
+	
+			<div id="oculto" class="table-responsive" style="visibility:hidden">
+				<table class="table table-hover">
+				    <thead>
+				        <tr>
+				            <th th:text="${persona.head.pnom}">Pr.Nom</th>
+				            <th th:text="${persona.head.snom}">Se.Nom</th>
+				            <th th:text="${persona.head.pape}">Pr.Ape</th>
+				            <th th:text="${persona.head.sape}">Se.Ape</th>
+				            <th th:text="${persona.head.tdoc}">Ti.Doc</th>
+				            <th th:text="${persona.head.ndoc}">Nu.Doc</th>
+			
+				        </tr>
+				    </thead>
+				    <tbody>
+					    <tr th:each="Per : ${Persona}">
+					       	<td th:text="${Per.primerNombre}"></td>
+					       	<td th:text="${Per.segundoNombre}"></td>
+					       	<td th:text="${Per.primerApellido}"></td>
+					       	<td th:text="${Per.segundoApellido}"></td>
+					       	<td th:text="${Per.tipoDoc}"></td>
+					       	<td th:text="${Per.numeroDoc}"></td>
+					    </tr>
+				    </tbody>
+				</table>
+			</div>
+</div>
+</body>
+</html>
