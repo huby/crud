@@ -4,7 +4,7 @@
 		<div class="container">
 			<h1>Persona</h1>
 			<div class="table-responsive">
-				<table class="table">
+				<table class="table" border=1>
 					<thead>
 						<tr>
 							<th scope="col">Id</th>
@@ -17,11 +17,11 @@
 							<th scope="col">FechaNacimiento</th>
 							<th scope="col">Estado</th>
 							<th scope="col">FechaCreacion</th>
-							<th scope="col">FechaActualizacion</th>
+							<th scope="col"> FEchaActualizacion</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="item: ${personaList}">
+						<tr th:each="item: ${list}">
 							<th scope="row" th:text="${item.id}"> Id </th>
 							<td th:text="${item.primerNombre}"> PrimerNombre </td>
 							<td th:text="${item.segundoNombre}"> SegundoNombre </td>
