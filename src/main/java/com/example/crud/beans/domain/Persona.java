@@ -1,5 +1,6 @@
 package com.example.crud.beans.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -9,9 +10,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "PERSONA")
-public class Persona {
+public class Persona implements Serializable{
 
-	// modelo total de implementacion automatica y por Rest
+	/**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+
+    // modelo total de implementacion automatica y por Rest
 	@Id
 	private String id;
 	
@@ -156,5 +162,20 @@ public class Persona {
 	public void setFechaCreacion(Date fechaCreacion) {
 		this.fechaCreacion = fechaCreacion;
 	}
+	
+    @Override
+    public String toString() {
+        return "Persona [id=" + id 
+                + ", primerNombre=" + primerNombre
+                + ", segundoNombre=" + segundoNombre
+                + ", primerApellido=" + primerApellido
+                + ", segundoApellido=" + segundoApellido
+                + ", tipoDoc=" + tipoDoc
+                + ", fechaNacimiento=" + fechaNacimiento
+                + ", estado=" + estado
+                + ", fechaCreacion=" + fechaCreacion
+                + ", fechaActualizacion=" + fechaActualizacion
+                +"]";
+    }
 
 }

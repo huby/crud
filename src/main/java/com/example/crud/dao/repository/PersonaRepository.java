@@ -7,5 +7,6 @@ import com.example.crud.beans.domain.Persona;
 
 @Repository
 public interface PersonaRepository extends JpaRepository<Persona, String> {
+    
 
 }

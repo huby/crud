@@ -1,6 +1,5 @@
 package com.example.crud.controller.rest;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +13,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
 import com.example.crud.beans.domain.Automovil;
 import com.example.crud.beans.request.AutomovilRequest;
 import com.example.crud.beans.request.FileInformationRequest;
@@ -31,10 +32,17 @@ public class AutomovilRestController {
 		return new ResponseEntity<>(automovilService.save(request), HttpStatus.OK);
 	}
 	
-	@GetMapping("/")
+	@GetMapping("/lista")
+	public ModelAndView lista()
+	{
+	    ModelAndView mode = new ModelAndView("automovil");
+	    mode.addObject("automovilList", automovilService.lista());
+	    return mode;
+	}
+	/*
 	public ResponseEntity<List<Automovil>> lista() {
 		return new ResponseEntity<>(automovilService.lista(), HttpStatus.OK);
-	}
+	}*/
 	
 	@PutMapping("/")
 	public ResponseEntity<Map<String,String>> modificar(@RequestBody AutomovilRequest request){

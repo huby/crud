@@ -1,0 +1,41 @@
+<html>
+	<body>
+		<div class="container">
+			<h1>Persona</h1>
+			<div class="table-responsive">
+				<table class="table" border=1>
+					<thead>
+						<tr>
+							<th scope="col">Id</th>
+							<th scope="col">PrimerNombre</th>
+							<th scope="col">SegundoNombre</th>
+							<th scope="col">PrimerApellido</th>
+							<th scope="col">SegundoApellido</th>
+							<th scope="col">TipoDocumento</th>
+							<th scope="col">NumeroDoc</th>
+							<th scope="col">FechaNacimiento</th>
+							<th scope="col">Estado</th>
+							<th scope="col">FechaCreacion</th>
+							<th scope="col"> FEchaActualizacion</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="item: ${lista}">
+							<th scope="row" th:text="${item.id}"> Id </th>
+							<td th:text="${item.primerNombre}"> PrimerNombre </td>
+							<td th:text="${item.segundoNombre}"> SegundoNombre </td>
+							<td th:text="${item.primerApellido}"> PrimerApellido </td>
+							<td th:text="${item.segundoApellido}"> SegundoApellido </td>
+							<td th:text="${item.tipoDoc}"> TipoDocumento </td>
+							<td th:text="${item.numeroDoc}"> NumeroDoc </td>
+							<td th:text="${item.fechaNacimiento}"> FechaNacimiento </td>
+							<td th:text="${item.estado}"> Estado </td>
+							<td th:text="${item.fechaCreacion}"> FechaCreacion </td>
+							<td th:text="${item.fechaActualizacion}"> FechaActualizacion </td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>
