@@ -9,9 +9,9 @@ import com.example.crud.beans.request.FileInformationRequest;
 
 public interface AutomovilService {
 	Map<String,String> save(AutomovilRequest request);	
-	List<Automovil> lista();
-	Map<String, String> modificar(AutomovilRequest request);
-	Map<String, String> eliminar(String id);
-	Automovil listarUno(String id);
+	List<Automovil> findAll();
+	Map<String, String> update(AutomovilRequest request);
+	Map<String, String> delete(String id);
+	Automovil findById(String id);
 	Map<String, String> saveFileAuto(FileInformationRequest request);
 }

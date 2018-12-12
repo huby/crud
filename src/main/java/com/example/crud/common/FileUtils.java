@@ -21,7 +21,7 @@ public class FileUtils {
         return Files.readAllLines(file, StandardCharsets.UTF_8);
     }
     
-    public static List<String> readLineFromTxt(String path, String fileName, int longitud) throws IOException {
+    public static List<String> readLinesFromTxt(String path, String fileName, int longitud) throws IOException {
         Path file = Paths.get(path + "/" + fileName + Constants.DOT + Constants.TXT_EXTENSION);
         String line = Files.readAllLines(file, StandardCharsets.UTF_8).get(0);
         List<String> personaLista = new ArrayList<>();

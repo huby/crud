@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,12 +54,12 @@ public class PersonaServiceImpl implements PersonaService {
 	}
 
 	@Override
-	public List<Persona> getPersonaList() {
+	public List<Persona> findAll() {
 		return personaRepository.findAll();
 	}
 
 	@Override
-	public Map<String,String> modificar(PersonaRequest request) {
+	public Map<String,String> update(PersonaRequest request) {
 		Optional<Persona> personaOptional = personaRepository.findById(request.getId());
 		
 		Map<String, String> result = new HashMap<>();
@@ -91,7 +92,7 @@ public class PersonaServiceImpl implements PersonaService {
 		return result;
 	}
 	@Override
-	public Map<String, String> eliminar(String id) {
+	public Map<String, String> delete(String id) {
 		String mensaje  = "";
 		Map<String, String> result = new HashMap<>();
 		if(personaRepository.existsById(id)) {
@@ -107,47 +108,9 @@ public class PersonaServiceImpl implements PersonaService {
 	}
 
 	@Override
-	public Persona listarPersona(String id) {
+	public Persona findById(String id) {
 		Optional<Persona> personaOptional  = personaRepository.findById(id);
 		return personaOptional.get();
-	}
-
-	@Override
-	public Map<String, List<String>> saveFromFile(FileInformationRequest request) {
-		Map<String, List<String>> result = new HashMap<>();
-		List<String> listaPersona = new ArrayList<>();
-		List<String> ids = new ArrayList<>();
-		try {
-			//listaPersona = FileUtils.readLinesFromTxt(request.getDirectory(),request.getFileName());
-			listaPersona = FileUtils.readLineFromTxt(request.getDirectory(),request.getFileName(), 200);
-			for(int i = 0; i<listaPersona.size();i++){
-				Persona persona = new Persona();
-			
-				String personaStr = listaPersona.get(i); //recorre toda la nueva lista 
-				persona.setId(personaStr.substring(0,50).trim());
-				persona.setPrimerNombre(personaStr.substring(50,75).trim());
-				persona.setSegundoNombre(personaStr.substring(75,100).trim());
-				persona.setPrimerApellido(personaStr.substring(100,125).trim());
-				persona.setSegundoApellido(personaStr.substring(125,150).trim());
-				persona.setTipoDoc(Integer.parseInt(personaStr.substring(150, 160).trim().trim()));
-				persona.setNumeroDoc(personaStr.substring(160,180).trim());
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
-				persona.setFechaNacimiento(sdf.parse(personaStr.substring(180,200).trim()));
-				persona.setFechaCreacion( new Date());
-				persona.setEstado("1");
-				
-				personaRepository.save(persona);
-				
-				ids.add(persona.getId());
-			}
-			
-		} catch (IOException | ParseException e) {
-			e.printStackTrace();
-		}
-		
-		result.put("ids", ids);
-		
-		return result;
 	}
 
 }

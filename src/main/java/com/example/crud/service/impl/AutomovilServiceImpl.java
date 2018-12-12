@@ -51,12 +51,12 @@ public class AutomovilServiceImpl implements AutomovilService  {
 	}
 
 	@Override
-	public List<Automovil> lista() {
+	public List<Automovil> findAll() {
 		return automovilRespository.findAll();
 	}
 
 	@Override
-	public Map<String, String> modificar(AutomovilRequest request) {
+	public Map<String, String> update(AutomovilRequest request) {
 		String mensaje = "";
 		Optional<Automovil> autos = automovilRespository.findById(request.getId());
 		Map<String, String> mapeo = new HashMap<>();
@@ -84,7 +84,7 @@ public class AutomovilServiceImpl implements AutomovilService  {
 	}
 
 	@Override
-	public Map<String, String> eliminar(String id) {
+	public Map<String, String> delete(String id) {
 		Map<String, String> mapeo = new HashMap<>();
 		String mensaje = null;
 		if(automovilRespository.existsById(id)) {
@@ -100,7 +100,7 @@ public class AutomovilServiceImpl implements AutomovilService  {
 	}
 
 	@Override
-	public Automovil listarUno(String id) {
+	public Automovil findById(String id) {
 		Optional<Automovil> automovil = automovilRespository.findById(id);
 		return automovil.get();
 	}

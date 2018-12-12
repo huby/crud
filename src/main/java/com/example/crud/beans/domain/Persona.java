@@ -1,5 +1,7 @@
 package com.example.crud.beans.domain;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -48,7 +50,6 @@ public class Persona {
 	public Persona() {
 		super();
 	}
-
 	
 	public Persona(String id, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido,
 			Integer tipoDoc, String numeroDoc, Date fechaNacimiento, String estado, Date fechaCreacion,
@@ -65,6 +66,27 @@ public class Persona {
 		this.estado = estado;
 		this.fechaCreacion = fechaCreacion;
 		this.fechaActualizacion = fechaActualizacion;
+	}
+
+	public Persona(String line) {
+
+		try {
+			this.id = line.substring(0,50).trim();
+			this.primerNombre =line.substring(50,75).trim();
+			this.segundoNombre = line.substring(75,100).trim();
+			this.primerApellido =line.substring(100,125).trim();
+			this.segundoApellido = line.substring(125,150).trim();
+			this.tipoDoc = Integer.parseInt(line.substring(150, 160).trim().trim());
+			this.numeroDoc = line.substring(160,180).trim();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+			this.fechaNacimiento = sdf.parse(line.substring(180,200).trim());
+			this.fechaCreacion = new Date();
+			this.estado = "1";
+		} catch (ParseException pe) {
+
+		} catch (Exception e) {
+
+		}
 	}
 
 

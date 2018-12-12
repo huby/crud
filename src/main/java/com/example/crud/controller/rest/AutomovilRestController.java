@@ -33,22 +33,22 @@ public class AutomovilRestController {
 	
 	@GetMapping("/")
 	public ResponseEntity<List<Automovil>> lista() {
-		return new ResponseEntity<>(automovilService.lista(), HttpStatus.OK);
+		return new ResponseEntity<>(automovilService.findAll(), HttpStatus.OK);
 	}
 	
 	@PutMapping("/")
 	public ResponseEntity<Map<String,String>> modificar(@RequestBody AutomovilRequest request){
-		return new ResponseEntity<>(automovilService.modificar(request), HttpStatus.OK);
+		return new ResponseEntity<>(automovilService.update(request), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Map<String, String>> eliminar(@PathVariable("id") String id){
-		return new ResponseEntity<>(automovilService.eliminar(id), HttpStatus.OK);
+		return new ResponseEntity<>(automovilService.delete(id), HttpStatus.OK);
 	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Automovil> listarUno(@PathVariable("id") String id){
-		return new ResponseEntity<>(automovilService.listarUno(id), HttpStatus.OK);
+		return new ResponseEntity<>(automovilService.findById(id), HttpStatus.OK);
 	}
 	
 	@PostMapping("/fileAuto")

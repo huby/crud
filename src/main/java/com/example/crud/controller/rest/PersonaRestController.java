@@ -30,8 +30,8 @@ public class PersonaRestController {
 	private PersonaService personaService;
 
 	@GetMapping("/")
-	public ResponseEntity<List<Persona>> getPersonaList() {
-		return new ResponseEntity<>(personaService.getPersonaList(), HttpStatus.OK);
+	public ResponseEntity<List<Persona>> findAllPersona() {
+		return new ResponseEntity<>(personaService.findAll(), HttpStatus.OK);
 	}
 
 	@PostMapping("/")
@@ -40,19 +40,19 @@ public class PersonaRestController {
 	}
 	
 	@PutMapping("/")
-	public ResponseEntity<Map<String, String>> modificar(@RequestBody PersonaRequest request){
-		return new ResponseEntity<>(personaService.modificar(request), HttpStatus.OK);
+	public ResponseEntity<Map<String, String>> update(@RequestBody PersonaRequest request){
+		return new ResponseEntity<>(personaService.update(request), HttpStatus.OK);
 		
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Persona> listarPersona(@PathVariable ("id") String id) {
-		return new ResponseEntity<>(personaService.listarPersona(id), HttpStatus.OK);
+	public ResponseEntity<Persona> findPersona(@PathVariable ("id") String id) {
+		return new ResponseEntity<>(personaService.findById(id), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Map<String, String>> eliminar(@PathVariable("id") String id){
-		return new ResponseEntity<>(personaService.eliminar(id), HttpStatus.OK);
+	public ResponseEntity<Map<String, String>> delete(@PathVariable("id") String id){
+		return new ResponseEntity<>(personaService.delete(id), HttpStatus.OK);
 	}
 	
 	@PostMapping("/fromFile")
