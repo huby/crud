@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.example.crud.beans.domain.Automovil;
 import com.example.crud.beans.request.AutomovilRequest;
-import com.example.crud.beans.request.FileInformationRequest;
 import com.example.crud.service.AutomovilService;
 
 @RestController
@@ -51,9 +51,4 @@ public class AutomovilRestController {
 		return new ResponseEntity<>(automovilService.findById(id), HttpStatus.OK);
 	}
 	
-	@PostMapping("/fileAuto")
-	public ResponseEntity<Map<String, String>> saveFilaAuto(@RequestBody FileInformationRequest request){
-		return new ResponseEntity<>(automovilService.saveFileAuto(request), HttpStatus.OK);
-	}
-
 }

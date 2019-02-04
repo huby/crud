@@ -9,7 +9,6 @@ import java.util.Map;
 
 public interface PersonaService {
 	Map<String, String> save(PersonaRequest request);
-	Map<String, String> save(FileInformationRequest fileInformationRequest);
 	List<Persona> findAll();
 	Map<String, String> update(PersonaRequest request);
 	Map<String, String> delete(String id);
