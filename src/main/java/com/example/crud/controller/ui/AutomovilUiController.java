@@ -17,11 +17,22 @@ public class AutomovilUiController {
 
 	@Autowired
 	private AutomovilService automovilService;
-	
+
 	@GetMapping(value = "/automovil")
 	public String index(Model model) {
 		List<Automovil> automovilList = automovilService.findAll();
 		model.addAttribute("automovilList", automovilList);
 		return "automovil/index";
 	}
+
+	/*
+	 * 
+	 * @GetMapping(value = "automovil") public String save (Model model) {
+	 * 
+	 * List<Automovil> automovilsave = automovilService.save();
+	 * 
+	 * }
+	 * 
+	 */
+
 }
