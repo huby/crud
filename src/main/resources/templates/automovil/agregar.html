@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="base/head :: head('Agregar Automovil')"></head>
+<body>
+	<br>
+	<div class="container">
+		<h2>DATOS DEL AUTOMÓVIL</h2>
+		<form action="" class="form-horizontal">
+			<div class="form-group">
+				<label class="control-label col-sm-2">Marca</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="marca" placeholder="Ejm: Toyota">
+				</div>
+			</div><br>
+			<div class="form-group">
+				<label class="control-label col-sm-2">Modelo</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="modelo" placeholder="Ejm: Yaris">
+				</div>
+			</div><br>
+			<div class="form-group">
+				<label class="control-label col-sm-2">Color</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="color" placeholder="Ejm: Negro, Rojo">
+				</div>
+			</div><br>
+			<div class="form-group">
+				<label class="control-label col-sm-2">Placa</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="placa" placeholder="Ejm: AQ7854L">
+				</div>
+			</div><br>
+			<div class="form-group">
+				<label class="control-label col-sm-2">Fabricación</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="fabricacion" placeholder="Ejm: 1990-05-10">
+				</div>
+			</div><br>
+			<div style="text-align: center;">
+				<button id="agregar" type="button" class="btn btn-success center">Agregar</button>
+			</div>
+		</form>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" th:src="@{/src/jquery/automovil/automovil.js}"></script>
+</body>
+</html>

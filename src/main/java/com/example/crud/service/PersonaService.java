@@ -1,7 +1,6 @@
 package com.example.crud.service;
 
 import com.example.crud.beans.domain.Persona;
-import com.example.crud.beans.request.FileInformationRequest;
 import com.example.crud.beans.request.PersonaRequest;
 
 import java.util.List;

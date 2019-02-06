@@ -1,0 +1,35 @@
+<html>
+<head th:replace="base/head :: head('Empresa')">
+</head>
+<body>
+	<div class="container-fluid">
+		<h1> Empresas Registradas </h1>
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col"> Id </th>
+					<th scope="col"> RUC </th>
+					<th scope="col"> Razon Social </th>
+					<th scope="col"> Direccion </th>
+					<th scope="col"> Rubro  </th>
+					<th scope="col"> Telefono </th>
+					<th scope="col"> Fecha de Creacion </th>
+					<th scope="col"> Fecha Actualizacion </th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each = "item: ${empresaList}">
+					<th scope="row" th:text = "${item.id}"></td>
+					<td th:text="${item.ruc}"></td>
+					<td th:text="${item.razonSocial}" ></td>
+					<td th:text="${item.direccion}"></td>
+					<td th:text="${item.rubro}"></td>
+					<td th:text="${item.telefonoContacto}"></td>
+					<td th:text="${item.fechaCreacion}"></td>
+					<td th:text="${item.fechaActualizacion}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

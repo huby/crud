@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="base/head :: head('Agregar Empresa')"></head>
+<body>
+	<br>
+	<div class="container">
+		<h2>DATOS DE LA EMPRESA</h2>
+		<form action="" class="form-horizontal">
+			<div class="form-group">
+				<label class="control-label col-sm-2">RUC</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="ruc" placeholder="Ejm: 1741230829">
+				</div>
+			</div><br>
+			<div class="form-group">
+				<label class="control-label col-sm-2">Razón Social</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="razon" placeholder="Ejm: Synopsis S.A.">
+				</div>
+			</div><br>
+			<div class="form-group">
+				<label class="control-label col-sm-2">Dirección</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="direccion" placeholder="Ejm: Av. Caminos del Inca 1750">
+				</div>
+			</div><br>
+			<div class="form-group">
+				<label class="control-label col-sm-2">Rubro</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="rubro" placeholder="Ejm: Desarrollo de software">
+				</div>
+			</div><br>
+			<div class="form-group">
+				<label class="control-label col-sm-2">Teléfono</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="telefono" placeholder="Ejm: 3671895">
+				</div>
+			</div><br>
+			<div class="form-group">
+				<label class="control-label col-sm-2">Fecha de creación</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="creacion" placeholder="Ejm: 1990-02-18">
+				</div>
+			</div><br>
+			<div style="text-align: center;">
+				<button id="success" type="button" class="btn btn-success center">Agregar</button>
+			</div>
+		</form>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" th:src="@{/src/jquery/empresa/empresa.js}"></script>
+</body>
+</html>
