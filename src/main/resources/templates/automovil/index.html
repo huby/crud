@@ -1,10 +1,10 @@
 <html>
-	<head>
-		<title> Automovil </title>
-	</head>
+	<head th:replace="base/head :: head('Empresa')"></head>
 	<body>
+		<div class="container">
 		<h1> Tabla de caracteristicas </h1>
-		<table border = "1">
+		<div class="table-responsive">
+		<table class="table">
 			<thead>
 				<tr>
 					<th> Id </th>
@@ -30,5 +30,7 @@
 				</tr>
 			</tbody>
 		</table>	
+		</div>
+		</div>
 	</body>
 </html>

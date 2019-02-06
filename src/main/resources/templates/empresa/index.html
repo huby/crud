@@ -1,0 +1,33 @@
+<html>
+	<head th:replace="base/head :: head('Empresa')"></head>
+	<body>
+		<div class="container">
+			<h1>Empresa</h1>
+			<div class="table-responsive">
+				<table class="table">
+					<thead>
+						<tr>
+							<th> Id </th>
+							<th> RUC </th>
+							<th> Razon Social </th>
+							<th> Direccion </th>
+							<th> Telefono  </th>
+							<th> Rubro </th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each = "item: ${empresaList}">
+							<td th:text = "${item.id}"> Id </td>
+							<td th:text="${item.ruc}"> RUC </td>
+							<td th:text="${item.razonsocial}" > Razon Social </td>
+							<td th:text="${item.direccion}"> Direccion </td>
+							<td th:text="${item.telefono}"> Telefono  </td>
+							<td th:text="${item.rubro}"> Rubro </td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<footer th:replace="base/footer :: footer('persona.js')"></footer>
+	</body>
+</html>

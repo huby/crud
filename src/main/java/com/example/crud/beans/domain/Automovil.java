@@ -109,9 +109,5 @@ public class Automovil {
 		this.fechaActializacion = fechaActializacion;
 	}
 	
-	
 
-	
-
-	
 }
