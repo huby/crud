@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<title> Clientes </title>
+	</head>
+	<body>
+		<h1 class="card-title"> Tabla de caracteristicas </h1>
+		<table border = "1" class="table table-striped table-bordered">
+			<thead class="thead-inverse">
+				<tr>
+					<th> Id </th>
+					<th> Nombre </th>
+					<th> Direccion </th>
+					<th> Apellido </th>
+					<th> Fecha Nac </th>
+					<th> Email </th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each = "item: ${clientelList}">
+					<td th:text = "${item.id}"> Id </td>
+					<td th:text="${item.nombre}"> Nombre </td>
+					<td th:text="${item.direccion}" > Direccion </td>
+					<td th:text = "${item.apellido}"> Apellido </td>
+					<td th:text="${item.fechanac}"> Fecha Nac </td>
+					<td th:text="${item.email}" > Email </td>
+				</tr>
+			</tbody>
+		</table>	
+	</body>
+</html>
