@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<title> Empresa </title>
+	</head>
+	<body>
+		<h1>DATOS DE LA EMPRESA</h1>
+		<table border = "1">
+			<thead>
+				<tr>
+					<th> Id </th>
+					<th> Razon Social </th>
+					<th> Numero RUC </th>
+					<th> FechaCreacion </th>
+					<th> Condicion </th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each ="item:${empresaList}">
+					<td th:text ="${item.id}"> Id </td>
+					<td th:text="${item.razonSocial}"> Razon Social </td>
+					<td th:text="${item.numeroRuc}" > Numero RUC </td>
+					<td th:text="${item.fechaCreacion}"> FechaCreacion </td>
+					<td th:text="${item.condicion}"> Condicion  </td>
+				</tr>
+			</tbody>
+		</table>	
+	</body>
+</html>
