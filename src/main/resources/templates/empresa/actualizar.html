@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head th:fragment="head(title)">
+<title th:text="${title}">Title</title>
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+	<br>
+	<div class="container">
+		<h2>DATOS DE LA EMPRESA A ACTUALIZAR</h2>
+		<form action="" class="form-horizontal">
+			<div class="form-group">
+				<label class="control-label col-sm-2">id</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="id"
+						placeholder="Inserte ID de la Empresa">
+				</div>
+			</div>
+			<br>
+			<div class="form-group">
+				<label class="control-label col-sm-2">Razon Social</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="razonSocial"
+						placeholder="Inserte nombre de la Empresa">
+				</div>
+			</div>
+			<br>
+			<div class="form-group">
+				<label class="control-label col-sm-2">RUC</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="numeroRuc"
+						placeholder="Inserte RUC">
+				</div>
+			</div>
+			<br>
+			<div class="form-group">
+				<label class="control-label col-sm-2">Fecha De Creacion</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="fechaCreacion"
+						placeholder="Ingrese fecha de creación">
+				</div>
+			</div>
+			<br>
+			<div class="form-group">
+				<label class="control-label col-sm-2">Condicion</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="condicion"
+						placeholder="Activo/Inactivo">
+				</div>
+			</div>
+			<br>
+
+			<div style="text-align: center;">
+				<button id="actualizar" type="button" class="btn btn-success center">Actualizar</button>
+			</div>
+		</form>
+	</div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript"
+		th:src="@{/src/jquery/empresa/empresaActual.js}"></script>
+</body>
+</html>
