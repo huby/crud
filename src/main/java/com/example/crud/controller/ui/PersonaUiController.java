@@ -20,8 +20,11 @@ public class PersonaUiController
     	model.addAttribute("personaList", personaService.findAll());
         return "persona/index";
     }
+    
     @GetMapping(path = "/agregarpersona")
-    public String index() {
+    public String agregar(Model model) {
+    	model.addAttribute("personaList", personaService.findAll());
         return "persona/agregarpersona";
     }
+    
 }

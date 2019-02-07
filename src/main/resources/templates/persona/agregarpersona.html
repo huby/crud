@@ -1,59 +1,89 @@
 <html>
 	<head th:replace="base/head :: head('Agregar nueva persona')"></head>
-
 	<body>
 	<body>
 	<div class="container">
 		<center><h1>Agregar persona</h1></center>
 	
 		<form action ="" method="post">
-		 <div class="col-8 mx-auto form-group">
-		    <label for="primerNombre">Primer Nombre</label>
-		    <input type="text" class="form-control" id="primerNombre" placeholder="Ingresar Primer Nombre">
-	 	 </div>
-	 	 
-		 <div class="col-8 mx-auto form-group">
-		    <label for="segundoNombre">Segundo Nombre</label>
-		    <input type="text" class="form-control" id="segundoNombre" placeholder="Ingresar Segundo Nombre">
-	 	 </div>
-	 	 
-	 	 <div class="col-8 mx-auto form-group">
-		    <label for="primerApellido">Primer Apellido</label>
-		    <input type="text" class="form-control" id="primerApellido" placeholder="Ingresar Primer Apellido">
-	 	 </div>	 
-	 	 	 
-	 	 <div class="col-8 mx-auto form-group">
-		    <label for="segundoApellido">Segundo Apellido</label>
-		    <input type="text" class="form-control" id="segundoApellido" placeholder="Ingresar Segundo Apellido">
-	 	 </div>	 	
-	 	  
-	 	 <div class="col-8 mx-auto form-group">
-		    <label for="tipoDoc">Tipo de Documento</label>
-		    <input type="text" class="form-control" id="tipoDoc" placeholder="Ingresar Tipo de Documento">
-	 	 </div>
-	 	 
-	 	 <div class="col-8 mx-auto form-group">
-		    <label for="numeroDoc">Número de documento</label>
-		    <input type="text" class="form-control" id="numeroDoc" placeholder="Ingresar Número de Documento">
-	 	 </div>
-	 	 
-	 	 <div class="col-8 mx-auto form-group">
-		    <label for="fechaNacimiento">Fecha de Nacimiento</label>
-		    <input type="date" class="form-control" id="fechaNacimiento" placeholder="Ingresar Fecha de Nacimiento">
-	 	 </div>
-	 	 
-	 	 <div class="col-8 mx-auto form-group">
-		    <label for="estado">Estado</label>
-		    <input type="text" class="form-control" id="estado" placeholder="Ingresar Estado">
-	 	 </div>
-	 	 <div class="col-8 mx-auto">
-	 	 <button type="button" id="success" class="btn btn-primary btn-lg btn-block">Enviar Datos</button>
-	 	 </div>	
-		
+			 <div class="col-8 mx-auto form-group">
+			    <label for="primerNombre">Primer Nombre</label>
+			    <input type="text" class="form-control" id="primerNombre" placeholder="Ingresar Primer Nombre">
+		 	 </div>
+		 	 
+			 <div class="col-8 mx-auto form-group">
+			    <label for="segundoNombre">Segundo Nombre</label>
+			    <input type="text" class="form-control" id="segundoNombre" placeholder="Ingresar Segundo Nombre">
+		 	 </div>
+		 	 
+		 	 <div class="col-8 mx-auto form-group">
+			    <label for="primerApellido">Primer Apellido</label>
+			    <input type="text" class="form-control" id="primerApellido" placeholder="Ingresar Primer Apellido">
+		 	 </div>	 
+		 	 	 
+		 	 <div class="col-8 mx-auto form-group">
+			    <label for="segundoApellido">Segundo Apellido</label>
+			    <input type="text" class="form-control" id="segundoApellido" placeholder="Ingresar Segundo Apellido">
+		 	 </div>	 	
+		 	  
+		 	 <div class="col-8 mx-auto form-group">
+			    <label for="tipoDoc">Tipo de Documento</label>
+			    <input type="text" class="form-control" id="tipoDoc" placeholder="Ingresar Tipo de Documento">
+		 	 </div>
+		 	 
+		 	 <div class="col-8 mx-auto form-group">
+			    <label for="numeroDoc">Número de documento</label>
+			    <input type="text" class="form-control" id="numeroDoc" placeholder="Ingresar Número de Documento">
+		 	 </div>
+		 	 
+		 	 <div class="col-8 mx-auto form-group">
+			    <label for="fechaNacimiento">Fecha de Nacimiento</label>
+			    <input type="date" class="form-control" id="fechaNacimiento" placeholder="Ingresar Fecha de Nacimiento">
+		 	 </div>
+		 	 
+		 	 <div class="col-8 mx-auto form-group">
+			    <label for="estado">Estado</label>
+			    <input type="text" class="form-control" id="estado" placeholder="Ingresar Estado">
+		 	 </div>
+		 	 <div class="col-8 mx-auto">
+		 	 <button type="button" id="success" class="btn btn-primary btn-lg btn-block">Guardar</button>
+		 	 </div> 
 		</form>
+		<div class="row justify-content-center">
+		 <div class="col-4">
+	 	 <button type="button" id="eliminar" class="btn btn-primary btn-lg btn-block">Eliminar</button>
+	 	 </div>
+	 	 <div class="col-4">
+	 	 <button type="button" id="editar" class="btn btn-primary btn-lg btn-block">Editar</button>
+	 	 </div>
+	 	</div>	
+	 	<br>
+		<div>
+	 	 <table class="table" id="table">
+	 	 	<thead class="thead-dark">
+			<tr>
+				<th scope="col">Item</th>
+				<th scope="col">Id</th>
+				<th scope="col">Nombre Completo</th>
+				<th scope="col">DNI</th>
+	 		</tr>
+	 		</thead>
+	 		<tbody>
+	 		<tr th:each="item: ${personaList}" >
+	 			<td scope="row"><input type="checkbox" class="editar" th:id="${item.id}" ></td>
+			  	<td th:text="${item.id}"> Id </td>
+				<td th:text="${item.primerNombre}+${item.segundoNombre}+
+				${item.primerApellido}+${item.segundoApellido}"> Nombre Completo </td>
+				<td th:text="${item.numeroDoc}"> DNI </td>
+				
+			  </tr>
+	 		</tbody>
+	 	 </table>
+	 	 </div>
 	</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     	<script type="text/javascript" th:src="@{/src/jquery/persona/persona.js}"></script>
+    	<footer th:replace="base/footer :: footer('persona.js')"></footer>
 	</body>
 </html>
