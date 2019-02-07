@@ -24,4 +24,5 @@ public class PersonaUiController
 		model.addAttribute("personaList", personaList);
         return "persona/index";
     }
+    
 }

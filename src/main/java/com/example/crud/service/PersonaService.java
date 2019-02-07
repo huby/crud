@@ -11,6 +11,6 @@ public interface PersonaService {
 	Map<String, String> save(PersonaRequest request);
 	List<Persona> findAll();
 	Map<String, String> update(PersonaRequest request);
-	Map<String, String> delete(String id);
+	Map<String, Object> delete(String id);
 	Persona findById(String id);
  }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/actualizar")
 public class EmpresaUiActualizar {
 	@GetMapping(value = "/empresa")
-	public String agregar() {
+	public String actualizar() {
 		return "empresa/actualizar";
 	}
 }

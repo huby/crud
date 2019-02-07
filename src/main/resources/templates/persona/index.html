@@ -1,43 +1,130 @@
+<!DOCTYPE html>
 <html>
-	<head th:replace="base/head :: head('Persona')"></head>
-	<body>
-		<div class="container">
-			<h1>Persona</h1>
-			<div class="table-responsive">
-				<table class="table">
-					<thead>
-						<tr>
-							<th scope="col">Id</th>
-							<th scope="col">PrimerNombre</th>
-							<th scope="col">SegundoNombre</th>
-							<th scope="col">PrimerApellido</th>
-							<th scope="col">SegundoApellido</th>
-							<th scope="col">TipoDocumento</th>
-							<th scope="col">NumeroDoc</th>
-							<th scope="col">FechaNacimiento</th>
-							<th scope="col">Estado</th>
-							<th scope="col">FechaCreacion</th>
-							<th scope="col">FechaActualizacion</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:each="item: ${personaList}">
-							<th scope="row" th:text="${item.id}"> Id </th>
-							<td th:text="${item.primerNombre}"> PrimerNombre </td>
-							<td th:text="${item.segundoNombre}"> SegundoNombre </td>
-							<td th:text="${item.primerApellido}"> PrimerApellido </td>
-							<td th:text="${item.segundoApellido}"> SegundoApellido </td>
-							<td th:text="${item.tipoDoc}"> TipoDocumento </td>
-							<td th:text="${item.numeroDoc}"> NumeroDoc </td>
-							<td th:text="${item.fechaNacimiento}"> FechaNacimiento </td>
-							<td th:text="${item.estado}"> Estado </td>
-							<td th:text="${item.fechaCreacion}"> FechaCreacion </td>
-							<td th:text="${item.fechaActualizacion}"> FechaActualizacion </td>
-						</tr>
-					</tbody>
-				</table>
+<head th:fragment="head(title)">
+<title th:text="${title}">Title</title>
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+
+</head>
+<body>
+	<br>
+	<div class="container">
+		<h2 style="text-align: center;">INGRESO DE DATOS</h2>
+		<form action="" class="form-horizontal" id="Form">
+			<div class="form-group">
+				<label class="control-label col-sm-2">ID</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="id"
+						placeholder="ID de la Empresa" disabled>
+				</div>
 			</div>
+			<br>
+			<div class="form-group">
+				<label class="control-label col-sm-2">Primer Nombre</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="primerNombre"
+						placeholder="Inserte su Primer Nombre">
+				</div>
+			</div>
+			<br>
+			<div class="form-group">
+				<label class="control-label col-sm-2">Segundo Nombre</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="segundoNombre"
+						placeholder="Inserte su segundo Nombre">
+				</div>
+			</div>
+			<br>
+			<div class="form-group">
+				<label class="control-label col-sm-2">Apellido Paterno</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="primerApellido"
+						placeholder="Inserte su Primer Apellido">
+				</div>
+			</div>
+			<br>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2">Apellido Materno</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="segundoApellido"
+						placeholder="Inserte su Segundo Apellido">
+				</div>
+			</div>
+			<br>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2">Telefono</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="tipoDoc"
+						placeholder="Inserte su tipo de documento">
+				</div>
+			</div>
+			<br>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2">DNI</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="numeroDoc"
+						placeholder="Inserte el numero de documento">
+				</div>
+			</div>
+			<br>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2">Fecha de Nacimiento</label>
+				<div class="col-sm-10">
+					<input type="date" class="form-control" id="fechaNacimiento"
+						placeholder="YYYY-MM-DD">
+				</div>
+			</div>
+			<br>
+
+
+			<div style="text-align: center;">
+				<button id="agregar" type="button" class="btn btn-success center">GUARDAR</button>
+				<!-- <input type="reset" id="reset" value="Limpiar" class="btn btn-success center" > -->
+				<input type="button" id="limpiar" class="btn btn-success center" value="LIMPIAR">
+			</div>
+
+			<div style="text-align: left;">
+				<button id="eliminar" type="button" class="btn btn-success center">ELIMINAR</button>
+				<button id="actualizar" type="button" class="btn btn-warning center">EDITAR</button>
+				<button id="refrescar" type="button" class="btn btn-danger center">REFRESCAR</button>
+			</div>
+		</form>
+	</div>
+
+	<div class="container">
+		<h1>RESUMEN</h1>
+		<div class="table-responsive">
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col">Item</th>
+						<th scope="col">ID</th>
+						<th scope="col">Nombre Completo</th>
+						<th scope="col">DNI</th>
+					</tr>
+				</thead>
+				<tbody id="tableBody">
+					<tr th:each="item: ${personaList}">
+						<td><input type="checkbox" class="select" value="" th:id="${item.id}"/></td>
+						<td scope="row" th:text="${item.id}"></td>
+						<td th:text="${item.primerNombre + ' ' + item.segundoNombre + ' ' +  item.primerApellido + ' ' + item.segundoApellido}" ></td>
+						<td th:text="${item.numeroDoc}"></td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
-		<footer th:replace="base/footer :: footer('persona.js')"></footer>
-	</body>
+	</div>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript"
+		th:src="@{/src/jquery/persona/persona.js}"></script>
+</body>
 </html>

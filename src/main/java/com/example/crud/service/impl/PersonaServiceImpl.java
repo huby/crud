@@ -48,7 +48,8 @@ public class PersonaServiceImpl implements PersonaService {
 
 	@Override
 	public List<Persona> findAll() {
-		return personaRepository.findAll();
+		List<Persona> personaList = personaRepository.findAll();
+		return personaList;
 	}
 
 	@Override
@@ -85,17 +86,22 @@ public class PersonaServiceImpl implements PersonaService {
 		return result;
 	}
 	@Override
-	public Map<String, String> delete(String id) {
+	public Map<String, Object> delete(String id) {
 		String mensaje  = "";
-		Map<String, String> result = new HashMap<>();
+		int codigo = 1;
+		Map<String, Object> result = new HashMap<>();
+		
 		if(personaRepository.existsById(id)) {
 			personaRepository.deleteById(id);
-			mensaje = "Se la eliminado";
+			mensaje = "Se ha eliminado";	
 		}else {
+			codigo = 0;
 			mensaje = "No se ha eliminado/no existe";
 		}
+		
 		result.put("mensaje", mensaje);
-	
+		result.put("codigo", codigo);
+		
 		return result;
 
 	}
