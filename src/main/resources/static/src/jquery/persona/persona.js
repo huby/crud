@@ -17,6 +17,12 @@ $(document).ready(function(){
 			data: JSON.stringify(datos),
 			success:function(data){
 				alert("Agregaste persona");
+				$("#table").append("<tr>" +
+						"<td scope='row'><input type='checkbox' class='table'id="+data.id+"></td>" +
+						"<td>" +data.id +"</td>" +
+						"<td>"+$("#primerNombre").val() + $("#segundoNombre").val()+$("#primerApellido").val()+$("#segundoApellido").val()+"</td>" +
+						"<td>"+$("#numeroDoc").val()+"</td>"+
+						"</tr>");
 			},
 			error:function(data){
 				alert("Error");
@@ -26,7 +32,7 @@ $(document).ready(function(){
 	
 	$("#editar").on("click",function(){
 		var id;
-		$(".editar").each(function(){
+		$(".table").each(function(){
 			if($(this).prop('checked')){
 				id=$(this).attr('id');
 			}	
@@ -49,6 +55,29 @@ $(document).ready(function(){
 			alert(data);
 		},
 			
+		});
+	});
+	
+	$("#eliminar").on("click",function(){
+		var id;
+		$(".table").each(function(){
+			if($(this).prop('checked')){
+				id=$(this).attr('id');
+				$(id).remove();
+			}
+		});
+		$.ajax({
+			type:"DELETE",
+			url:"http://localhost:9090/persona/" + id,
+			success: function(data){
+				alert(data.mensaje)
+				//eliminar fila
+				var etiqueta = document.getElementById(id);
+				$(etiqueta).closest("tr").remove();
+			},
+			error: function(data){
+				alert(data.mensaje);
+			},
 		});
 	});
 });
