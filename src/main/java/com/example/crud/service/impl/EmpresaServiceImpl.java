@@ -29,6 +29,7 @@ public class EmpresaServiceImpl implements EmpresaService {
 		empresa.setRazonSocial(request.getRazonSocial());
 		empresa.setNumeroRuc(request.getNumeroRuc());
 		empresa.setFechaCreacion(request.getFechaCreacion());
+		empresa.setEstado("1");
 		empresa.setCondicion(request.getCondicion());
 
 		empresaRepository.save(empresa);
@@ -73,9 +74,10 @@ public class EmpresaServiceImpl implements EmpresaService {
 	}
 
 	@Override
-	public Map<String, String> delete(String id) {
+	public Map<String, Object> delete(String id) {
 		String mensaje = "";
-		Map<String, String> result = new HashMap<>();
+		int codigo = 1;
+		Map<String, Object> result = new HashMap<>();
 		if (empresaRepository.existsById(id)) {
 			empresaRepository.deleteById(id);
 			mensaje = "Se ha eliminado";
@@ -83,6 +85,7 @@ public class EmpresaServiceImpl implements EmpresaService {
 			mensaje = "No se ha eliminado/no existe";
 		}
 		result.put("mensaje", mensaje);
+		result.put("codigo", codigo);
 
 		return result;
 	}

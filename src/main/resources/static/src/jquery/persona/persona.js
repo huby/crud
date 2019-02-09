@@ -1,32 +1,36 @@
 $(document).ready(function() {
 	
-	$("#eliminar").on('click', function() {
-
+	$("#eliminar").on('click', function()
+	{
 		var id;
 		
 		$('.select').each(function() {
-			
-			if ($(this).prop('checked')) {
+			if ($(this).prop('checked'))
+			{
 				 id = $(this).attr('id');
 			}
 		});
 		
-		$.ajax({
+		$.ajax(
+		{
 			type : 'DELETE',
 			url : "http://localhost:9090/persona/" + id,
-			success : function(data) {
-				
-				if (data.codigo === 1) {
+			success : function(data)
+			{	
+				if (data.codigo === 1)
+				{
 					refrescar();
-				} else {
-					alert(data.mensaje);
 				}
-				
+				else
+				{
+					alert(data.mensaje);
+				}	
 			},
-			error : function(data) {
+			error : function(data)
+			{
 				alert(data.mensaje);
 			}
-		});  
+		});
 		
 	});
 	
@@ -34,102 +38,90 @@ $(document).ready(function() {
 		
 		var id;
 		
-		$('.select').each(function() {
-			
-			if ($(this).prop('checked')) {
+		$('.select').each(function()
+		{			
+			if ($(this).prop('checked')) 
+			{
 				 id = $(this).attr('id');
 			}		
 		});
 		
-		if (id!=null) {
+		if (id != null) 
+		{
+		var datos = 
+			{
+			id : $("#id").val(),
+			primerNombre : $("#primerNombre").val(),
+			segundoNombre : $("#segundoNombre").val(),
+			primerApellido : $("#primerApellido").val(),
+			segundoApellido : $("#segundoApellido").val(),
+			tipoDoc : $("#tipoDoc").val(),
+			numeroDoc : $("#numeroDoc").val(),
+			fechaNacimiento : $("#fechaNacimiento").val(),
+			}
 		
-			var datos = {
-				id : $("#id").val(),
-				primerNombre : $("#primerNombre").val(),
-				segundoNombre : $("#segundoNombre").val(),
-				primerApellido : $("#primerApellido").val(),
-				segundoApellido : $("#segundoApellido").val(),
+		$.ajax(
+		{
+			type : 'PUT',
+			contentType : "application/json",
+			url : "http://localhost:9090/persona/",
+			data : JSON.stringify(datos),
+			success : function(data)
+			{
+				alert("Se actualizaron los datos de la Persona");
+				refrescar();
+				limpiarFormulario();
+			},
+			error : function(data)
+			{
+				alert(data);
+			}
+		});
+		
+		} 
+		else
+		{
+			var datos =
+			{
+				primerNombre: $("#primerNombre").val(),
+				segundoNombre: $("#segundoNombre").val(),
+				primerApellido: $("#primerApellido").val(),
+				segundoApellido: $("#segundoApellido").val(),
 				tipoDoc : $("#tipoDoc").val(),
 				numeroDoc : $("#numeroDoc").val(),
 				fechaNacimiento : $("#fechaNacimiento").val(),
 			}
 			
-			$.ajax({
-				type : 'PUT',
-				contentType : "application/json",
-				url : "http://localhost:9090/persona/",
-				data : JSON.stringify(datos),
-				success : function(data) {
-					alert("Se actualizaron los datos de la Persona");
-					location.reload();
-				},
-				error : function(data) {
-					alert(data);
-				}
-			});
+			var primN = $("#primerNombre").val();
+			var segN = $("#segundoNombre").val();
+			var primA = $("#primerApellido").val();
+			var segA = $("#segundoApellido").val();
+			var tip = $("#tipoDoc").val();
+			var numD = $("#numeroDoc").val();
+			var fech = $("#fechaNacimiento").val();
 			
-		} else {
-			
-			var datos = {
-				primerNombre : $("#primerNombre").val(),
-				segundoNombre : $("#segundoNombre").val(),
-				primerApellido : $("#primerApellido").val(),
-												segundoApellido : $(
-														"#segundoApellido")
-														.val(),
-												tipoDoc : $("#tipoDoc").val(),
-												numeroDoc : $("#numeroDoc")
-														.val(),
-												fechaNacimiento : $(
-														"#fechaNacimiento")
-														.val(),
-
-											}
-											var primN = $("#primerNombre")
-													.val();
-											var segN = $("#segundoNombre")
-													.val();
-											var primA = $("#primerApellido")
-													.val();
-											var segA = $("#segundoApellido")
-													.val()
-											var tip = $("#tipoDoc").val();
-											var numD = $("#numeroDoc").val();
-											var fech = $("#fechaNacimiento")
-													.val();
-
-											if (primN === "" || segN === ""
-													|| primA === ""
-													|| segA === ""
-													|| tip === ""
-													|| numD === ""
-													|| fech === "") {
-												alert("¡Ingrese los datos completos de la persona!");
-											} else {
-												$
-														.ajax({
-															type : "POST",
-															contentType : "application/json",
-															url : "http://localhost:9090/persona/",
-															data : JSON
-																	.stringify(datos),
-															success : function(
-																	data) {
-																alert("Se agrego los datos de la persona: "
-																		+ data.id);
-																Form.ajax
-																		.reload();
-																document
-																		.getElementById(
-																				"Form")
-																		.reset(); 
-			},
+			if (primN === "" || segN === ""|| primA === ""|| segA === ""|| tip === ""|| numD === ""|| fech === "")
+			{
+				alert("¡Ingrese los datos completos de la persona!");
+			} 
+			else
+			{
+				$.ajax({
+					type : "POST",
+					contentType : "application/json",
+					url : "http://localhost:9090/persona/",
+					data : JSON.stringify(datos),
+					success : function(data)
+					{
+						alert("Se agrego los datos de la persona: "+ data.id);
+						limpiarFormulario();
+						refrescar();
+					},
 			error : function(data) {
 				alert(data);
 			}
 		}); };
-		};
-		
+		};	
 	});
 	
 	$("#actualizar").on('click', function() {
@@ -137,18 +129,19 @@ $(document).ready(function() {
 			var id;
 			
 			$('.select').each(function() {
-				
-				if ($(this).prop('checked')) {
-					 id = $(this).attr('id');
-						
+				if ($(this).prop('checked')) 
+				{
+					 id = $(this).attr('id');		
 				}		
 			});
 			
-			$.ajax({
+			$.ajax(
+			{
 				type : 'GET',
 				contentType : "application/json",
 				url : "http://localhost:9090/persona/"+ id,
-				success : function(data) {
+				success : function(data)
+				{
 					console.log(data.id);
 					
 					$("#id").val(data.id);
@@ -166,16 +159,22 @@ $(document).ready(function() {
 			});
 		});
 
-	$("#limpiar").on('click', 
-		function limpiarFormulario() {
-		    document.getElementById("Form").reset();
+	$("#limpiar").on('click', function () 
+	{
+		limpiarFormulario();
 	});
 	
 	$("#refrescar").on('click', function (){
 		refrescar();
 	});
 	
-	function refrescar() {
+	function limpiarFormulario()
+	{
+		 document.getElementById("Form").reset();
+	}
+	
+	function refrescar()
+	{
 		
 		$.ajax({
 			type : 'GET',

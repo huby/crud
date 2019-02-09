@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "EMPRESA1")
+@Table(name = "EMPRESA")
 public class Empresa {
 
 	// modelo total de implementacion automatica y por Rest
@@ -24,18 +24,21 @@ public class Empresa {
 
 	@Column
 	private String condicion;
+	@Column
+	private String estado;
 
 	public Empresa() {
 		super();
 	}
 
-	public Empresa(String id, String razonSocial, String numeroRuc, String fechaCreacion, String condicion) {
+	public Empresa(String id, String razonSocial, String numeroRuc, String fechaCreacion, String condicion, String estado) {
 		super();
 		this.id = id;
 		this.razonSocial = razonSocial;
 		this.numeroRuc = numeroRuc;
 		this.fechaCreacion = fechaCreacion;
 		this.condicion = condicion;
+		this.estado = estado;
 	}
 
 	public String getId() {
@@ -77,5 +80,14 @@ public class Empresa {
 	public void setCondicion(String condicion) {
 		this.condicion = condicion;
 	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+	
 
 }

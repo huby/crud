@@ -13,7 +13,7 @@ public interface EmpresaService {
 
 	Map<String, String> update(EmpresaRequest request);
 
-	Map<String, String> delete(String id);
+	Map<String, Object> delete(String id);
 
 	Empresa findById(String id);
 }

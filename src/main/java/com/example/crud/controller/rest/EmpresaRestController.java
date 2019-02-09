@@ -47,7 +47,7 @@ public class EmpresaRestController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Map<String, String>> delete(@PathVariable("id") String id){
+	public ResponseEntity<Map<String, Object>> delete(@PathVariable("id") String id){
 		return new ResponseEntity<>(empresaService.delete(id), HttpStatus.OK);
 	}
 	

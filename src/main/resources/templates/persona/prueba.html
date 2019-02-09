@@ -1,109 +1,27 @@
 <!DOCTYPE html>
-
 <html>
-
-<head>
-
-    <meta charset="utf-8">
-
-    <title>javascript - Obtener el valor de un input type=checkbox de varias maneras</title>
-
-    <script>
-
-    function capturar()
-
-    {
-
-        // obtenemos e valor por el numero de elemento
-
-        var porElementos=document.forms["form1"].elements[1].checked;
-
-        // Obtenemos el valor por el id
-
-        var porId=document.getElementById("acepto").checked;
-
-        // Obtenemos el valor por el Nombre
-
-        var porNombre=document.getElementsByName("acepto")[0].checked;
-
-        // Obtenemos el valor por el tipo de tag
-
-        var porTagName=document.getElementsByTagName("input")[1].checked;
-
-        // Obtenemos el valor por el nombre de la clase
-
-        var porClassName=document.getElementsByClassName("formulario_check")[0].checked;
-
- 
-
-        document.getElementById("resultado").innerHTML=" \
-
-            Por elementos: "+porElementos+" \
-
-            <br>Por ID: "+porId+" \
-
-            <br>Por Nombre: "+porNombre+" \
-
-            <br>Por TagName: "+porTagName+" \
-
-            <br>Por ClassName: "+porClassName;
-
-    }
-
-    </script>
-
- 
-
-    <style>
-
-        form   {width:250px;height:180px;border:1px solid #ccc;padding:10px;}
-
-    </style>
-
-</head>
-
- 
-
-<body>
-
-    <h1>Obtener el valor de un input type=checkbox de varias maneras</h1>
-
-    <form id="form1">
-
-        Nombre:<br><input type="text" name="nombre" value="jose" id="nombre" class="formulario">
-
- 
-
-        <p><input type="checkbox" name="acepto" id="acepto" class="formulario_check"> Acepto el contrato</p>
-
- 
-
-        <p>Deacuerdo: Si<input type="radio" name="deacuerdo" value="si"> No<input type="radio" name="deacuerdo" value="no"></p>
-
- 
-
-        <p>
-
-        <select name="seleccion" id="seleccion" class="formulario_select">
-
-            <option value="1">primera</option>
-
-            <option value="2">segunda</option>
-
-        </select>
-
-        </p>
-
+    <form id="validate-me-plz">
+        <div>
+            Required: <input type="text" name="required" data-rule-required="true" />
+        </div>
+        <div>
+            Required w/custom message: <input type="text" name="required-sassy" data-rule-required="true" data-msg-required="Please enter SOMETHING." />
+        </div>
+        <div>
+            Email: <input type="text" name="email" data-rule-email="true"/>
+        </div>
+        <div>
+            Email w/custom message: <input type="text" name="anotherEmail" data-rule-email="true" data-msg-email="Please enter a valid email address you dummy." />
+        </div>
+        <div>
+            <input type="submit" value="Validate!" />
+        </div>
     </form>
-
-    <input type="button" value="Esta seleccionado el checkbox" onclick="capturar()">
-
-    <div id="resultado"></div>
-
- 
-
-    <p><a href="http://www.lawebdelprogramador.com">http://www.lawebdelprogramador.com</a></p>
-
-</body>
-
+	
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.0.js"></script>
+    <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+	
+	<script type="text/javascript">
+		$('#validate-me-plz').validate();
+	</script>
 </html>
