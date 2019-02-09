@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="base/head :: head('Agregar Persona')"></head>
+<body>
+	<br>
+	<div class="container">
+		<h2>DATOS DE LA PERSONA</h2>
+		<form action="" class="form-horizontal">
+			<div class="form-group">
+				<label class="control-label col-sm-2">Primer Nombre</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="pnombre" placeholder="Ejm: Edwin, Juan">
+				</div>
+			</div><br>
+			<div class="form-group">
+				<label class="control-label col-sm-2">Segundo Nombre</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="snombre" placeholder="Ejm: Marco, Jhon">
+				</div>
+			</div><br>
+			<div class="form-group">
+				<label class="control-label col-sm-2">Primer Apellido</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="papellido" placeholder="Ejm: Paredes, Guerrero">
+				</div>
+			</div><br>
+			<div class="form-group">
+				<label class="control-label col-sm-2">Segundo Apellido</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="sapellido" placeholder="Ejm: Quispe, Trujillo">
+				</div>
+			</div><br>
+			<div class="form-group">
+				<label class="control-label col-sm-2">Tipo Documento</label>
+				<div class="col-sm-10">
+					<input type="number" class="form-control" id="tdocumento" placeholder="Ejm: 1=DNI, 2=Pasaporte">
+				</div>
+			</div><br>
+			<div class="form-group">
+				<label class="control-label col-sm-2">Número Documneto</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="ndocumento" placeholder="Ejm: 74123082">
+				</div>
+			</div><br>
+			<div class="form-group">
+				<label class="control-label col-sm-2">Fecha de Nacimiento</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="nacimiento" placeholder="Ejm: 1990-02-18">
+				</div>
+			</div><br>
+			<div style="text-align: center;">
+				<button id="agregar" type="button" class="btn btn-success center">Agregar</button>
+			</div>
+		</form>
+	</div>
+		<div class="container">
+			<h1>Persona</h1>
+			<div class="table-responsive">
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">Id</th>
+							<th scope="col">PrimerNombre</th>
+							<th scope="col">SegundoNombre</th>
+							<th scope="col">PrimerApellido</th>
+							<th scope="col">SegundoApellido</th>
+							<th scope="col">TipoDocumento</th>
+							<th scope="col">NumeroDoc</th>
+							<th scope="col">FechaNacimiento</th>
+							<th scope="col">Estado</th>
+							<th scope="col">FechaCreacion</th>
+							<th scope="col">FechaActualizacion</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="item: ${personaList}">
+							<th scope="row" th:text="${item.id}"> Id </th>
+							<td th:text="${item.primerNombre}"> PrimerNombre </td>
+							<td th:text="${item.segundoNombre}"> SegundoNombre </td>
+							<td th:text="${item.primerApellido}"> PrimerApellido </td>
+							<td th:text="${item.segundoApellido}"> SegundoApellido </td>
+							<td th:text="${item.tipoDoc}"> TipoDocumento </td>
+							<td th:text="${item.numeroDoc}"> NumeroDoc </td>
+							<td th:text="${item.fechaNacimiento}"> FechaNacimiento </td>
+							<td th:text="${item.estado}"> Estado </td>
+							<td th:text="${item.fechaCreacion}"> FechaCreacion </td>
+							<td th:text="${item.fechaActualizacion}"> FechaActualizacion </td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" th:src="@{/src/jquery/persona/persona.js}"></script>
+</body>
+</html>

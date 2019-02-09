@@ -54,14 +54,10 @@ public class PersonaServiceImpl implements PersonaService {
 	@Override
 	public Map<String,String> update(PersonaRequest request) {
 		Optional<Persona> personaOptional = personaRepository.findById(request.getId());
-		
 		Map<String, String> result = new HashMap<>();
-		
 		Persona persona = null;
 		String mensaje = "";
-		
 		if (personaOptional.isPresent()){
-			
 			persona = personaOptional.get();
 			persona.setId(request.getId());
 			persona.setPrimerNombre(request .getPrimerNombre());

@@ -1,0 +1,33 @@
+<html>
+	<head th:replace="base/head :: head('Persona')"></head>
+	<body>
+		<div class="container">
+			<h1>Cliente Test</h1>
+			<div class="table-responsive">
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">Id</th>
+							<th scope="col">Nombre</th>
+							<th scope="col">Apellido Paterno</th>
+							<th scope="col">Apellido Materno</th>
+							<th scope="col">Telefono</th>
+							<th scope="col">Direccion</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="item: ${personaList}">
+							<th scope="row" th:text="${item.id}"> Id </th>
+							<td th:text="${item.nombre}"> NOmbre </td>
+							<td th:text="${item.apellidop}"> Apellido p </td>
+							<td th:text="${item.apellidom}"> Apellido M </td>
+							<td th:text="${item.telefono}"> Telefono </td>
+							<td th:text="${item.direccion}"> Direccion </td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<footer th:replace="base/footer :: footer('persona.js')"></footer>
+	</body>
+</html>

@@ -24,4 +24,8 @@ public class AutomovilUiController {
 		model.addAttribute("automovilList", automovilList);
 		return "automovil/index";
 	}
+//	@GetMapping(value = "/agregar_automovil")
+//	public String agregar() {
+//		return "automovil/agregar";
+//	}
 }

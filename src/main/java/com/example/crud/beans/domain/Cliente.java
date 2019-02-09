@@ -24,7 +24,6 @@ public class Cliente {
 	private String email;
 	public Cliente() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public Cliente(String id, String nombre, String direccion, String apellido, Date fechanac, String email) {
 		super();

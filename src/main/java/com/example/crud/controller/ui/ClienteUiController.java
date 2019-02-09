@@ -22,4 +22,8 @@ public class ClienteUiController {
 		model.addAttribute("clientelList", clientelList);
 		return "cliente/index";
 	}
+//	@GetMapping(path= "/agregar_cliente")
+//	public String agregar() {
+//		return "cliente/agregar";
+//	}
 }

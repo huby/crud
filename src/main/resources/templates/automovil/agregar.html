@@ -9,53 +9,43 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2">Marca</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="marca"
-						placeholder="Ejm: Toyota">
+					<input type="text" class="form-control" id="marca" placeholder="Ejm: Toyota">
 				</div>
-			</div>
+			</div><br>
 			<div class="form-group">
 				<label class="control-label col-sm-2">Modelo</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="modelo"
-						placeholder="Ejm: Yaris">
+					<input type="text" class="form-control" id="modelo" placeholder="Ejm: Yaris">
 				</div>
-			</div>
+			</div><br>
 			<div class="form-group">
 				<label class="control-label col-sm-2">Color</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="color"
-						placeholder="Ejm: Negro, Rojo">
+					<input type="text" class="form-control" id="color" placeholder="Ejm: Negro, Rojo">
 				</div>
-			</div>
+			</div><br>
 			<div class="form-group">
 				<label class="control-label col-sm-2">Placa</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="placa"
-						placeholder="Ejm: AQ7854L">
+					<input type="text" class="form-control" id="placa" placeholder="Ejm: AQ7854L">
 				</div>
-			</div>
-			
+			</div><br>
 			<div class="form-group">
 				<label class="control-label col-sm-2">Fabricación</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="fabricacion"
-						placeholder="Ejm: 1990-05-10">
+					<input type="text" class="form-control" id="fabricacion" placeholder="Ejm: 1990-05-10">
 				</div>
+			</div><br>
+			<div style="text-align: center;">
+				<button id="agregar" type="button" class="btn btn-success center">Agregar</button>
 			</div>
-			<button id="agregar" type="button" class="btn btn-dark center">GUARDAR</button>
-			<input type="button" id="limpiar" class="btn btn-success center"
-				value="LIMPIAR">
-			<button id="eliminar" type="button" class="btn btn-primary center">ELIMINAR</button>
-			<button id="actualizar" type="button" class="btn btn-warning center">EDITAR</button>
-			<button id="refrescar" type="button" class="btn btn-danger center">REFRESCAR</button>
 		</form>
 	</div>
 	<div class="table-responsive">
-		<h1>Listado de Automoviles</h1>
+		<h1>Tabla de caracteristicas</h1>
 		<table class="table">
 			<thead>
 				<tr>
-					<th>Item</th>
 					<th>Id</th>
 					<th>Marca</th>
 					<th>Modelo</th>
@@ -68,8 +58,6 @@
 			</thead>
 			<tbody>
 				<tr th:each="item: ${automovilList}">
-					<td><input type="checkbox" class="select" id="checkp"
-						th:id="${item.id}"></td>
 					<td th:text="${item.id}">Id</td>
 					<td th:text="${item.marca}">Marca</td>
 					<td th:text="${item.modelo}">Modelo</td>
@@ -82,9 +70,7 @@
 			</tbody>
 		</table>
 	</div>
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script type="text/javascript"
-		th:src="@{/src/jquery/automovil/automovil.js}"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" th:src="@{/src/jquery/automovil/automovil.js}"></script>
 </body>
 </html>
