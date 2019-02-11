@@ -8,18 +8,19 @@
 		<thead>
 			<tr>
 				<th>Id</th>
+				<th>Direccion</th>
 				<th>Nombre</th>
 				<th>Ruc</th>
-				<th>Direccion</th>
+				
 
 			</tr>
 		</thead>
 		<tbody>
 			<tr th:each="item: ${empresaList}">
 				<td th:text="${item.id}">Id</td>
+				<td th:text="${item.direccion}">Direccion</td>
 				<td th:text="${item.nombre}">Nombre</td>
 				<td th:text="${item.ruc}">Ruc</td>
-				<td th:text="${item.direccion}">Direccion</td>
 				
 			</tr>
 

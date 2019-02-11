@@ -19,11 +19,22 @@ public class EmpresaUIController {
 	@Autowired
 	EmpresaService empresaservice;
 
+	/*
 	@GetMapping(value = "/empresa")
 	public String index(Model model) {
 		List<Empresa> empresaList = empresaservice.findAll();
 		model.addAttribute("empresaList", empresaList);
 		return "empresa/index";
+	}*/
+	
+	@GetMapping(path ="/empresa_agregar")
+	public String agregar (Model model)
+	
+	{
+		List<Empresa> empresaList = empresaservice.findAll();
+		model.addAttribute("empresaList", empresaList);
+		return "empresa/registrar";
 	}
+	
 
 }

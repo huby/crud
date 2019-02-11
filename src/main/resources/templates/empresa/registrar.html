@@ -1,24 +1,67 @@
 <html>
-<head>
+<head th:replace="base/head :: head('Agregar Empresa')">
 <title>Empresa</title>
 </head>
 <body>
-	
-	<form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+	<div class="container" style="text-align: center;">
+		<h1>AGREGAR EMPRESA</h1>
+		<form>
+
+
+			<div class="form-group col-md-6">
+				<label>Direccion</label> <input class="form-control" type="text"
+					id="direccion" placeholder="Ingrese Direccion">
+			</div>
+
+			<div class="form-group col-md-6">
+				<label>Nombre</label> <input type="text" class="form-control"
+					id="nombre" placeholder="Ingrese nombre">
+			</div>
+
+
+			<div class="form-group col-md-6">
+				<label>Ruc</label> <input type="text" class="form-control" id="ruc"
+					placeholder="Ingrese Ruc">
+			</div>
+
+			<div class="form-group col-md-6">
+				<button id="agregar" type="button" class="btn btn-primary center">Ingresar</button>
+				<button id="editar" type="button" class="btn btn-danger center">Editar</button>
+				<button id="eliminar" type="button" class="btn btn-warning center">Eliminar</button>
+			</div>
+
+
+			<div class="container">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Item</th>	
+							<th>Id</th>
+							<th>Direccion</th>
+							<th>Nombre</th>
+							<th>RUc</th>
+						</tr>
+					</thead>
+					<tbody id="tableBody">
+						<tr th:each="item: ${empresaList}">
+							<td><input type="checkbox" class="select" th:id="${item.id}"></td>
+							<td th:text="${item.id}">ID</td>
+							<td th:text="${item.direccion}">Direccion</td>
+							<td th:text="${item.nombre}">Nombre</td>
+							<td th:text="${item.ruc}">Ruc</td>
+
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+
+		</form>
+	</div>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript"
+		th:src="@{/src/jquery/empresa/empresa.js}"></script>
 </body>
 </html>

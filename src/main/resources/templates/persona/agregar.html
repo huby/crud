@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="base/head :: head('Agregar Persona')"></head>
+
+<body>
+	<br>
+	<div class="container">
+		<h2>DATOS DE LA PERSONA</h2>
+		<form id="register-form" action="" class="form-horizontal">
+
+			<div class="form-group col-md-6">
+				<label for="pnombre"> Primer Nombre</label> <input type="text"
+					class="form-control" id="1nombre" placeholder="  Primer Nombre"
+					name="prnombre">
+
+			</div>
+
+			<div class="form-group col-md-6">
+				<label for="pnombre">Segundo Nombre</label> <input type="text"
+					class="form-control" id="2nombre" placeholder=" Segundo Nombre"
+					name="srnombre">
+			</div>
+
+
+			<div class="form-group col-md-6">
+				<label for="pnombre">Primer Apellido</label> <input type="text"
+					class="form-control" id="1apellido" placeholder="Primer apellido"
+					name="unoapellido">
+			</div>
+
+
+			<div class="form-group col-md-6">
+				<label for="pnombre">Segundo Apellido</label> <input type="text"
+					class="form-control" id="2apellido" placeholder=" Segundo apellido"
+					name="dosapellido">
+			</div>
+
+			<!--<div class="form-group col-md-6">
+				<label for="pnombre">Tipo Documento</label> <input type="text"
+					class="form-control" id="tdocumento"
+					placeholder="Tipo de Documento">
+			</div>-->
+
+			<div class="form-group col-md-6">
+				<label for="pnombre">Tipo Documento</label>
+				<select id="tdocumento">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					
+				</select>
+			</div>
+
+
+			<div class="form-group col-md-6">
+				<label for="pnombre">Numero Documento</label> <input type="text"
+					class="form-control" id="ndocumento"  name="ndocumentos" maxlength="8" minlength="8" 
+					placeholder="Numero de Documento">
+
+			</div>
+
+			<div class="form-group col-md-6">
+				<label for="pnombre">Fecha Nacimiento</label> <input type="date"
+					class="form-control fecha" id="fnacimiento"
+					placeholder="fecha de Nacimiento">
+			</div>
+
+
+			<div style="text-align: center;">
+				<button id="agregar" type="button" class="btn btn-success center">Agregar</button>
+				<button id="eliminar" type="button" class="btn btn-danger center">Eliminar</button>
+				<button id="editar" type="button" class="btn btn-warning center">Editar</button>
+			</div>
+			<br>
+
+
+			<div class="container">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Item</th>
+							<th>Id</th>
+
+							<th scope="col">Nombre Completo</th>
+
+							<th scope="col">Número Documento</th>
+
+
+						</tr>
+					</thead>
+					<tbody id="tableBody">
+						<tr th:each="item: ${personaList}">
+							<td><input type="checkbox" class="select" th:id="${item.id}"></td>
+							<th scope="row" th:text="${item.id}">Id</th>
+							<td
+								th:text="${item.primerNombre + ' ' + item.segundoNombre + ' ' +  item.primerApellido + ' ' + item.segundoApellido}">Nombre
+								Completo</td>
+							<td th:text="${item.numeroDoc}">NumeroDoc</td>
+
+
+
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+
+
+		</form>
+	</div>
+
+
+
+
+
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript"
+		th:src="@{/src/jquery/persona/persona.js}"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/additional-methods.min.js"></script>
+
+</body>
+</html>

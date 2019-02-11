@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.crud.service.AutomovilService;
@@ -22,7 +23,7 @@ public class AutomovilUiController {
 	public String index(Model model) {
 		List<Automovil> automovilList = automovilService.findAll();
 		model.addAttribute("automovilList", automovilList);
-		return "automovil/index";
+		return "automovil/agregar";
 	}
 
 	/*
@@ -34,5 +35,26 @@ public class AutomovilUiController {
 	 * }
 	 * 
 	 */
-
+		
+	@GetMapping(path ="/agregar_automovil")
+	private String agregar(Model model)
+	{
+	List<Automovil> automovilList = automovilService.findAll();
+	model.addAttribute("automovilList", automovilList);
+		return "automovil/agregar";
+	}
+	
+	
+	@GetMapping(path="actualizar_automovil")
+	 private String update()
+	 {
+		
+		 return "automovil/actualizar";
+	 }
+	@GetMapping(path="eliminar_automovil")
+	 private String delete()
+	 {
+		
+		 return "automovil/eliminar";
+	 }
 }

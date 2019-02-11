@@ -29,8 +29,8 @@ public class PersonaUiController
     }*/
     
        
-    
-    @GetMapping(value = "/persona" )
+   
+    @GetMapping(path = "/persona" )
     public String index(Model model) {
 		List<Persona> personaList = personaservice.findAll();
 		model.addAttribute("personaList", personaList);
@@ -39,6 +39,13 @@ public class PersonaUiController
 		
 	}
     
+    
+    @GetMapping(path = "/agregar_persona")
+    public String agregar(Model model) {
+    	List<Persona> personaList = personaservice.findAll();
+		model.addAttribute("personaList", personaList);
+        return "persona/agregar";
+    }
     
     
     
